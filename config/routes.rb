@@ -1,6 +1,13 @@
 PmsApp::Application.routes.draw do
-  resource :users
+  get "dashboard/index"
 
+  resource :users
+  resource :sessions, :only => [:new, :create, :destroy]
+
+  match '/signin', :to => 'sessions#new'
+  match '/signup', :to => 'users#new'
+  match '/signout', :to => 'sessions#destroy'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -50,7 +57,7 @@ PmsApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'users#new'
+  root :to => 'dashboard#index'
 
   # See how all your routes lay out with "rake routes"
 

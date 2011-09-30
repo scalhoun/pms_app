@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	attr_accessible :name, :email, :password, :password_confirmation
 	has_secure_password # Adds functions and validators and attr info
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
