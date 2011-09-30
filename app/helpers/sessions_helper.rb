@@ -1,4 +1,8 @@
 module SessionsHelper
+	#TODO
+	# Change from session based login to secure cookie with no expire
+	#
+	
 	def current_user
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
